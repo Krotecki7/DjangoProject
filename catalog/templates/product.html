@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">{{ product.name }}</h1>
+        <p>Цена: {{ product.price }}</p>
+        <p>Описание товара: {{ product.description }}</p>
+        <p>Категория: {{ product.category }}</p>
+        <p>Изображение: <img src="{{ product.image.url }}"></p>
+        <p>Дата создания: {{ product.created_ad }}</p>
+        <p>Дата обновления: {{ product.created_up }}</p>
+    </div>
+{% endblock %}
