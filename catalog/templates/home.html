@@ -2,7 +2,7 @@
 {% load my_tags %}
 {% block content %}
 {% include 'title.html' %}
-<div class="row text-center" xmlns:catalog="http://www.w3.org/1999/xhtml">
+<div class="row text-center">
         {% for product in products %}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
@@ -12,11 +12,11 @@
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title"> {{product.price}} </h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- {{ product.description|truncatechars:100 }}</li>
-                        <li>- <img class="img-fluid" src="{{ product.image | media_filter }}" alt="Фото не найдено"></li>
+                        <li> {{ product.description|truncatechars:100 }}</li>
+                        <li> <img class="img-fluid" src="{{ product.image | media_filter }}" alt="Фото не найдено"></li>
                     </ul>
                     <a class="btn btn-lg btn-block btn-outline-primary" role="button"
-                       href="{% url "catalog:product" product.pk%}">Подробнее</a>
+                       href="{% url 'catalog:product' product.pk%}">Подробнее</a>
                 </div>
             </div>
         </div>

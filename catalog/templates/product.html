@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container mt-5">
-        <a class="btn btn-block btn-primary" role="button" href="{% url "catalog:home" %}">Назад</a>
+        <a class="btn btn-block btn-primary" role="button" href="{% url 'catalog:home' %}">Назад</a>
         <h1 class="mb-4">{{ product.name }}</h1>
         <p>Цена: {{ product.price }}</p>
         <p>Описание товара: {{ product.description }}</p>
