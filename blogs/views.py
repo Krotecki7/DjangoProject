@@ -8,12 +8,12 @@ class BlogCreateView(CreateView):
     model = Blog
     fields = ['name', 'text', 'image',]
     template_name = "blogs/blog_form.html"
-    success_url = reverse_lazy("blog_list")
+    success_url = reverse_lazy("blogs_list")
 
 
 class BlogListView(ListView):
     model = Blog
-    template_name = 'blogs/blog_list.html'
+    template_name = 'blogs/blogs_list.html'
     context_object_name = 'blog'
 
     def get_queryset(self):
@@ -24,20 +24,16 @@ class BlogUpdateView(UpdateView):
     model = Blog
     fields = ['name', 'text', 'image', ]
     template_name = "blogs/blog_form.html"
-    success_url = reverse_lazy("blog_list")
+    success_url = reverse_lazy("blogs_list")
 
     def get_success_url(self):
-        return reverse("blogs/blog_detail", args=self.kwargs.get("pk"))
+        return reverse("blogs/blog_detail", args=(self.object.pk, ))
 
 
 class BlogDetailView(DetailView):
     model = Blog
     template_name = "blogs/blog_detail.html"
     context_object_name = 'blog'
-
-    def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        self.object = None
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -49,4 +45,4 @@ class BlogDetailView(DetailView):
 class BlogDeleteView(DeleteView):
     model = Blog
     template_name = "blogs/blog_confirm_delete.html"
-    success_url = reverse_lazy("blog_list")
+    success_url = reverse_lazy("blogs_list")
