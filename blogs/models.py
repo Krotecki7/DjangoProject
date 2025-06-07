@@ -6,7 +6,7 @@ class Blog(models.Model):
     text = models.TextField(verbose_name="Содержимое", blank=True, null=True)
     image = models.ImageField(upload_to="blogs_images/", blank=True, null=True, verbose_name="Превью")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
-    is_valid = models.BooleanField(verbose_name="Признак публикации")
+    is_valid = models.BooleanField(verbose_name="Признак публикации", blank=True, null=True, default=True)
     views_count = models.PositiveIntegerField(verbose_name="Счетчик просмотров", default=0)
 
     class Meta:
