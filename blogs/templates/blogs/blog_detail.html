@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">{{ blog.name }}</h1>
+        <p>Содержимое{{ blog.text }}</p>
+        <p>Создано: {{ blog.created_at }}</p>
+        <p>Превью: <img class="img-fluid" src="{{ blog.image.url }}"></p>
+        <a href="{% url 'blogs:blog_update' blog.pk %}" class="btn btn-secondary">Редактировать</a>
+        <a href="{% url 'blogs:blog_delete' blog.pk %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'blogs:blogs_list' %}" class="btn btn-primary">Вернуться к списку</a>
+    </div>
+{% endblock %}
