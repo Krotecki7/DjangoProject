@@ -6,22 +6,9 @@ from .models import Product
 from .constants import forbidden_words
 
 
-def valid_name(name):
-    if name.lower in forbidden_words:
-        raise ValidationError('Запрещенное слово в названии', params={'name': name})
-
-
-def valid_description(description):
-    for word in forbidden_words:
-        if word in description.lower:
-            raise ValidationError('Вы используете запрещенное слово в описание', params={'description': description})
-
-
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        name = forms.CharField(max_length=100, validators=[valid_name])
-        description = forms.CharField(max_length=1000, validators=[valid_description])
         fields = ('name', 'description', 'image', 'category', 'price',)
 
     def __init__(self, *args, **kwargs):
@@ -53,8 +40,9 @@ class ProductForm(ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
-        if name.lower in forbidden_words:
-            raise ValidationError('Запрещенное слово в названии')
+        for word in forbidden_words:
+            if word in name:
+                raise ValidationError('Запрещенное слово в названии')
         return name
 
     def clean_description(self):
