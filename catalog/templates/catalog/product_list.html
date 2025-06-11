@@ -2,8 +2,9 @@
 {% load my_tags %}
 {% block content %}
 {% include 'catalog/title.html' %}
+<a href="{% url 'catalog:product_create' %}" class="btn btn-primary mb-3">Добавить игру</a>
 <div class="row text-center">
-        {% for product in object_list %}
+        {% for product in products %}
         <div class="col-3">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -16,7 +17,11 @@
                         <li> <img class="img-fluid" src="{{ product.image | media_filter }}" alt="Фото не найдено"></li>
                     </ul>
                     <a class="btn btn-lg btn-block btn-outline-primary" role="button"
-                       href="{% url 'catalog:product' product.pk%}">Подробнее</a>
+                       href="{% url 'catalog:product_detail' product.pk%}">Подробнее</a>
+                    <a class="btn btn-lg btn-block btn-outline-primary" role="button"
+                       href="{% url 'catalog:product_update' product.pk %}">Редактировать</a>
+                    <a class="btn btn-lg btn-block btn-outline-primary" role="button"
+                       href="{% url 'catalog:product_delete' product.pk %}">Удалить</a>
                 </div>
             </div>
         </div>
