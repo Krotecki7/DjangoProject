@@ -4,14 +4,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
-    username = None
     email = models.EmailField(unique=True, verbose_name="Почта")
 
     phone_number = PhoneNumberField(
         blank=True,
         null=True,
         verbose_name="Номер телефона",
-        help_text="Введите номер телефона",
     )
     country = models.CharField(
         max_length=25, blank=True, null=True, verbose_name="Страна"
