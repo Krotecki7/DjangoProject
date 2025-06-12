@@ -2,7 +2,7 @@ from django.shortcuts import render
 from catalog.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, TemplateView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 from .forms import ProductForm
 from django.urls import reverse_lazy
 
