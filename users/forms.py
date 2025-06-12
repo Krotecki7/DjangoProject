@@ -8,7 +8,14 @@ from .models import User
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('email', 'phone_number', 'country', 'image', 'password1', 'password2',)
+        fields = (
+            "email",
+            "phone_number",
+            "country",
+            "image",
+            "password1",
+            "password2",
+        )
 
     def __init__(self, *args, **kwargs):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
@@ -32,6 +39,6 @@ class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields['username'].widget.attrs['placeholder'] = 'Ваша почта'
-            self.fields['password'].widget.attrs['placeholder'] = 'Пароль'
-            self.fields[field].widget.attrs.update({'class': 'form-control'})
+            self.fields["username"].widget.attrs["placeholder"] = "Ваша почта"
+            self.fields["password"].widget.attrs["placeholder"] = "Пароль"
+            self.fields[field].widget.attrs.update({"class": "form-control"})
