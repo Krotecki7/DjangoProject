@@ -6,14 +6,18 @@ from .models import Blog
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = ['name', 'text', 'image',]
+    fields = [
+        "name",
+        "text",
+        "image",
+    ]
     template_name = "blogs/blog_form.html"
     success_url = reverse_lazy("blogs:blogs_list")
 
 
 class BlogListView(ListView):
     model = Blog
-    template_name = 'blogs/blogs_list.html'
+    template_name = "blogs/blogs_list.html"
     context_object_name = "blogs"
 
     def get_queryset(self):
@@ -22,18 +26,22 @@ class BlogListView(ListView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ['name', 'text', 'image', ]
+    fields = [
+        "name",
+        "text",
+        "image",
+    ]
     template_name = "blogs/blog_form.html"
     success_url = reverse_lazy("blogs:blogs_list")
 
     def get_success_url(self):
-        return reverse("blogs:blog_detail", args=(self.object.pk, ))
+        return reverse("blogs:blog_detail", args=(self.object.pk,))
 
 
 class BlogDetailView(DetailView):
     model = Blog
     template_name = "blogs/blog_detail.html"
-    context_object_name = 'blog'
+    context_object_name = "blog"
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
