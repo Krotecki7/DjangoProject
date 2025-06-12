@@ -4,12 +4,12 @@ from catalog.models import Product, Category
 
 
 class Command(BaseCommand):
-    help = 'Загрузка данных из фикстур'
+    help = "Загрузка данных из фикстур"
 
     def handle(self, *args, **kwargs):
         Product.objects.all().delete()
         Category.objects.all().delete()
 
-        call_command('loaddata', 'category_data.json')
-        call_command('loaddata', 'products_data.json')
-        self.stdout.write(self.style.SUCCESS('Successfully loaded data from fixture'))
+        call_command("loaddata", "category_data.json")
+        call_command("loaddata", "products_data.json")
+        self.stdout.write(self.style.SUCCESS("Successfully loaded data from fixture"))

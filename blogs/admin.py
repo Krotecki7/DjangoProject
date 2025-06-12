@@ -4,5 +4,4 @@ from .models import Blog
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('name', 'text', 'image')
-
+    list_display = ("name", "text", "image")

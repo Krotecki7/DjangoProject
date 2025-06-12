@@ -25,7 +25,7 @@ class Product(models.Model):
         verbose_name="Категория товара",
         blank=True,
         null=True,
-        related_name='products'
+        related_name="products",
     )
     price = models.IntegerField(verbose_name="Цена")
     created_ad = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")

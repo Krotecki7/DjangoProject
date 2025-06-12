@@ -9,5 +9,9 @@
         <p>Изображение: <img class="img-fluid" src="{{ product.image.url }}"></p>
         <p>Дата создания: {{ product.created_ad }}</p>
         <p>Дата обновления: {{ product.created_up }}</p>
+        <a class="btn btn-lg btn-block btn-outline-primary" role="button"
+           href="{% url 'catalog:product_update' product.pk %}">Редактировать</a>
+        <a class="btn btn-lg btn-block btn-outline-primary" role="button"
+           href="{% url 'catalog:product_delete' product.pk %}">Удалить</a>
     </div>
 {% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+  <h2>Вы покинули магазин</h2>
+  <p>Ждем вас снова!</p>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Войти снова</a>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_list' %}">Вернуться в магазин</a>
+{% endblock %}
