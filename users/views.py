@@ -26,7 +26,7 @@ class CustomRegisterView(FormView):
 
     def send_welcome_email(self, user_email):
         subject = 'Добро пожаловать в магазин комьютерных игры - "SkyStore"'
-        message = "Спасибо, что присоеденились к нам!"
+        message = "Спасибо, что присоединились к нам!"
         from_email = os.getenv("EMAIL_HOST_USER")
         recipient_list = [
             user_email,
