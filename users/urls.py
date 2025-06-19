@@ -13,5 +13,5 @@ urlpatterns = [
     ),
     path("logout/", CustomLogoutView.as_view(next_page="users:logout"), name="logout"),
     path("register/", CustomRegisterView.as_view(), name="register"),
-    path("not_auth/", NotAuthView.as_view(), name="not_auth")
+    path("not_auth/", NotAuthView.as_view(), name="not_auth"),
 ]

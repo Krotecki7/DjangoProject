@@ -50,3 +50,9 @@ class ProductForm(ModelForm):
             if word in description:
                 raise ValidationError("Запрещенное слово в описании")
         return description
+
+
+class ProductModeratorForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ["is_active"]
