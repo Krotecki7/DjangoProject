@@ -44,7 +44,7 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         user = self.request.user
         if user == self.object.owner:
             return ProductForm
-        if user.has_perm("catalog.can_unpublish_product") and user.has_perm(
+        elif user.has_perm("catalog.can_unpublish_product") and user.has_perm(
             "catalog.can_delete_product"
         ):
             return ProductModeratorForm

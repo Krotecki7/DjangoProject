@@ -18,7 +18,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name="Наименование")
     description = models.TextField(verbose_name="Описание", blank=True, null=True)
     image = models.ImageField(
-        upload_to="products/", blank=True, null=True, verbose_name="Изображение"
+        upload_to="products/", blank=True, null=True, verbose_name="Изображение", default="products/default_image.webp"
     )
     category = models.ForeignKey(
         Category,
@@ -49,7 +49,13 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name", "price", "created_ad", "updated_ad"]
-        permissions = [("can_unpublish_product", "Can unpublish product")]
+        permissions = [("can_unpublish_product", "Can unpublish product"),
+                       ("can_delete_product", "Can delete product")]
 
     def __str__(self):
         return self.name
+
+    @property
+    def image_url(self):
+        if self.image and hasattr(self.image, 'url'):
+            return self.image.url
