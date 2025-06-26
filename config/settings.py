@@ -151,3 +151,13 @@ LOGIN_REDIRECT_URL = "catalog:product_list"
 LOGOUT_REDIRECT_URL = "users:logout"
 
 LOGIN_URL = "users:not_auth"
+
+CASHED_ENABLE = True
+if CASHED_ENABLE:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://127.0.0.1:6379/1',
+        }
+    }
+    
