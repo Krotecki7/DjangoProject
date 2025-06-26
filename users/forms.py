@@ -10,6 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = (
             "email",
+            "username",
             "phone_number",
             "country",
             "image",
@@ -21,6 +22,9 @@ class CustomUserCreationForm(UserCreationForm):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
         self.fields["email"].widget.attrs.update(
             {"class": "form-control", "placeholder": "Введите почту"}
+        )
+        self.fields["username"].widget.attrs.update(
+            {"class": "form-control", "placeholder": "Придумайте ник"}
         )
         self.fields["phone_number"].widget.attrs.update(
             {"class": "form-control", "placeholder": "Введите номер телефона"}
@@ -39,6 +43,6 @@ class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
-            self.fields["username"].widget.attrs["placeholder"] = "Ваша почта"
+            self.fields["username"].widget.attrs["placeholder"] = "Имя пользователя"
             self.fields["password"].widget.attrs["placeholder"] = "Пароль"
             self.fields[field].widget.attrs.update({"class": "form-control"})

@@ -5,7 +5,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class User(AbstractUser):
     email = models.EmailField(unique=True, verbose_name="Почта")
-
+    username = models.CharField(max_length=30, blank=True, null=True, verbose_name="Имя пользователя", unique=True)
     phone_number = PhoneNumberField(
         blank=True,
         null=True,
@@ -22,8 +22,8 @@ class User(AbstractUser):
         help_text="Загрузите ваш аватар",
     )
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = []
 
     class Meta:
         verbose_name = "Пользователь"
