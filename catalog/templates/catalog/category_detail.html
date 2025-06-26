@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+{% include 'catalog/title.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">{{ category }}</h1>
+        <p>Описание категории: {{ category.description }}</p>
+        <p>Список продуктов:
+                {% for prod in object_list %}
+                <p>
+                    {{ prod.name }}
+                </p>
+                {% endfor %}
+        </p>
+        <a class="btn btn-block btn-primary" role="button" href="{% url 'catalog:product_list' %}">Назад</a>
+    </div>
+{% endblock %}
